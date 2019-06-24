@@ -1,0 +1,14 @@
+### {{ project.description}} ###
+
+### Executables
+TSC?=./node_module/.bin/tsc
+
+
+### Graph ###
+
+lib: $(shell find src -name \*.ts -o -name \*.json)
+	rm -R $@ 2> /dev/null || true 
+	mkdir $@
+	cp -R -u src/* $@
+	$(TSC) --project $@
+	touch $@
